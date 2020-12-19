@@ -73,3 +73,31 @@ print(df.loc["B","Y"])
 #Select a specific row/column value
 
 print(df.loc[["A","B"],["W","Y"]])
+#Obtain subsets
+
+print("------------------------Data Frames Conditional Selection & Indexing-------------------------------------------------")
+
+print(df> 0)
+#Conditional selection operator returns true false
+
+print(df)
+
+booldf = df > 0
+print(df[booldf])
+
+print(df[df > 0])
+# #Simplified version - returns NaN for false values
+
+print(df["W"] > 0)
+
+print(df[df["W"]>0])
+# #Will print rows where column W is greater than zero
+
+print(df[df["X"] < 0])
+#Will print rows where column X is less than zero
+
+print("---------------")
+print(df[df["W"]<0]["Y"])
+# Will print out Column X where Row W is greater than zero
+
+
