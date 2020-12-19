@@ -58,8 +58,8 @@ df.drop("new", axis=1, inplace = True)
 #To remove you need to refer inplace = true as otherwise Pandas will not remove it to save you accidentaly losing information. Then it is perma gone.
 print(df)    
 
-df.drop("E", axis=0, inplace = True)
-print(df)
+# df.drop("E", axis=0, inplace = True)
+# print(df)
 #Axis is preset to zero so you do not need to type it 
 
 
@@ -98,6 +98,27 @@ print(df[df["X"] < 0])
 
 print("---------------")
 print(df[df["W"]<0]["Y"])
-# Will print out Column X where Row W is greater than zero
+# Will print out the values in Column Y where the value of Row W is less than zero
 
+print(df[df["W"]>0]["X"])
+# Will print out the values in Column X where the value of Row W is more than zero
 
+print("---------------")
+print(df[(df["W"]>0) & (df["Y"]>1)])
+# print a rows which meet multiple conditions set in the column. Python 'and' operator needs to be typed & because both conditions are true
+
+newdf = df.reset_index()
+print(newdf)
+#Resets the Index from AB etc to 012 etc gives it a numerical index.
+
+newind = "CA NY WY OR CO".split()
+
+df["States"] = newind
+print(df)
+#Creates a new column States
+
+set_index = df.set_index("States")
+print(set_index)
+#Sets states as the new index.
+
+print(df)
