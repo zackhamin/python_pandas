@@ -42,3 +42,34 @@ print(np.random.seed(101))
 
 df = pd.DataFrame(randn(5,4),["A","B","C","D","E"],["W","X","Y","Z"])
 print(df)
+#Create a daya frame with random numbers, A - E are the Series, W - Z are the columns
+
+print(df["W"])
+#Select a column
+
+print(df[["W","Z"]])
+#Select a column
+
+add_column = df["new"] = df["W"] + df["Y"]
+#Add a new column
+print(df)
+
+df.drop("new", axis=1, inplace = True)
+#To remove you need to refer inplace = true as otherwise Pandas will not remove it to save you accidentaly losing information. Then it is perma gone.
+print(df)    
+
+df.drop("E", axis=0, inplace = True)
+print(df)
+#Axis is preset to zero so you do not need to type it 
+
+
+print(df.loc["A"])
+#Print a row
+
+print(df.iloc[2])
+#Print a row using numerical value
+
+print(df.loc["B","Y"])
+#Select a specific row/column value
+
+print(df.loc[["A","B"],["W","Y"]])
