@@ -122,3 +122,31 @@ print(set_index)
 #Sets states as the new index.
 
 print(df)
+
+print("------------------------Multi Index & Index Heirarchy-------------------------------------------------")
+
+#Index levels
+outside = ["G1","G1","G1","G2","G2","G2"]
+inside = [1,2,3,1,2,3]
+
+hier_index = list(zip(outside,inside))
+#List of tuple pairs
+print(hier_index)
+
+hier_index = pd.MultiIndex.from_tuples(hier_index)
+print(hier_index)
+
+df = pd.DataFrame(randn(6,2),hier_index,["A","B"])
+#Multilevel index - Two sets of Indexes
+print(df)
+
+print(df.loc["G1"])
+#print 1 set of data from first G1 set.
+
+print(df.loc["G1"].loc[1])
+#Print the data from line 1 in set 1 in a series
+
+print(df.index.names)
+
+df.index.names = ["Groups", "Num"]
+print(df)
