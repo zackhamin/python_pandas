@@ -150,3 +150,32 @@ print(df.index.names)
 
 df.index.names = ["Groups", "Num"]
 print(df)
+
+print(df.loc["G2"].loc[3]["B"])
+#To grab a specific value in a cell
+
+print(df.xs(1,level="Num"))
+#Cross section which is easier than the loc method. The 1 represents the row we want the level represents the index name.
+
+#MISSING DATA
+
+d = {"A":[1,2,np.nan],"B":[5,np.nan,np.nan],"C":[1,2,3]}
+print(d)
+
+df = pd.DataFrame(d)
+print(df)
+
+print(df.dropna())
+#prints any row without a null value in it. i.e if a row contains a null value the whole row is dropped
+
+print(df.dropna(axis=1))
+#prints any column without a null value in it. i.e. if a column contains a null value the whole column is dropped
+
+print(df.dropna(thresh=2))
+#Drop a row if it does not have atleast two values that are NOT NaN. So, two whole numbers.
+
+print(df.fillna(value="Fill Value"))
+
+fill_nan = df["A"].fillna(value=df["A"].mean())
+
+print(fill_nan)
