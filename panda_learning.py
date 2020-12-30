@@ -233,4 +233,47 @@ print(df["col2"].nunique())
 #Prints out the length of the unique values array.
 
 print(df["col2"].value_counts())
+#Prints the values of the column with the number of times they appear.
 
+print(df["col1"] > 2)
+#Conditional operational method reminder True/False.
+
+print(df[df["col1"] > 2])
+#Conditional operational method reminder values.
+
+
+def timesTwo(x):
+    return x*2
+#Custom function for below example
+
+print(df["col1"].apply(timesTwo))
+#Uses a custom function as a method. Returns values in col 1 X 2
+
+print(df["col2"].apply(lambda x : x*2))
+#Does the same as the above two methods but using a Lambda expression in one line
+
+
+print(df["col3"].apply(len))
+#Returns the length of each string value
+
+sorted_column = df.sort_values("col2")
+#Rearranges the rows based off of the values in column 1
+print(sorted_column)
+
+new_data = {
+    "A":["foo","foo","foo","bar","bar","bar"],
+    "B":["one","one","two","two","one","one"],
+    "C":["x","y","x","y","x","y"],
+    "D":[1,3,2,5,4,1]
+}
+
+new_data_frame = pd.DataFrame(new_data)
+
+print(new_data_frame)
+
+print(new_data_frame.pivot_table(values="D", index=["A","B"],columns=["C"]))
+#Creates a pivot table, related to excel, which creates an index from A and B, Columns from values in C, which is x and y and values from D.
+#So, foo two column Y returns NaN because in the original there is no foo with a Y value only an X value.
+#Similarly bar two column X returns NaN because there is only a bar two with a value of Y
+
+print("------------------------Data input and output-------------------------------------------------")
