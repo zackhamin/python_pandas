@@ -179,3 +179,58 @@ print(df.fillna(value="Fill Value"))
 fill_nan = df["A"].fillna(value=df["A"].mean())
 
 print(fill_nan)
+
+print("------------------------Group By-------------------------------------------------")
+
+data = {"Company": [
+    "GOOG","GOOG","MSFT","MSFT","FB","FB"],
+    "PERSON":["SAM","CHARLIE","AMY","VANESSA","CARL","SARAH"],
+    "SALES":[200,120,340,124,243,350]}
+
+df = pd.DataFrame(data)
+print(df)
+
+
+byCompany = df.groupby("Company")
+bySales = df.groupby("SALES")
+print(byCompany.mean())
+# To do analysis on a column you need to get the column name as a variable.
+#Pandas will automatically get the column with integers and do the calculations
+
+print(byCompany.sum())
+
+print(byCompany.count())
+# Returns the number of instances of a column, i.e. 2 people working at each company -
+# 2 sets of sales values
+
+print(bySales.max())
+#highest value of sales per company
+
+print(df.groupby("Company").sum().loc["FB"]) 
+#One line method to return a specific value after being summed up.
+
+print(df.groupby("Company").describe())
+#Gives more detailed information on the total data. 
+
+print("------------------------Merging Joining & Concatenating-------------------------------------------------")
+
+#Concat is used to merge with the ability to merge on a key (column) or inner and outter.
+
+print("------------------------Operations-------------------------------------------------")
+
+df = pd.DataFrame({
+    "col1": [1,2,3,4],
+    "col2": [444,555,666,444],
+    "col3": ["abc","def","ghi","xyz"]
+})
+
+print(df)
+
+print(df["col2"].unique())
+#Prints out an array of the unique values in column 2, no repeated values.
+
+print(df["col2"].nunique())
+#Prints out the length of the unique values array.
+
+print(df["col2"].value_counts())
+
