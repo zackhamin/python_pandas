@@ -30,6 +30,20 @@ print("--------------Total Pay incl Benefits--------------------")
 print(sal[sal["EmployeeName"] == "JOSEPH DRISCOLL"]["TotalPayBenefits"])
 
 print("--------------Total Pay incl Benefits--------------------")
-print(sal["TotalPayBenefits"].max())
 print(sal[sal["TotalPayBenefits"] == sal["TotalPayBenefits"].max()])
 
+print("--------------Total Pay incl Benefits--------------------")
+print(sal[sal["TotalPayBenefits"] == sal["TotalPayBenefits"].min()])
+
+print("--------------Mean base pay--------------------")
+print(sal.groupby(["Year"] , sort = False)["BasePay"].mean())
+
+print("--------------job titles--------------------")
+print(sal["JobTitle"].nunique())
+
+
+print("--------------Most common jobs--------------------")
+print(sal["JobTitle"].value_counts().head(5))
+
+print("--------------Job titles with One person--------------------")
+print(sum(sal[sal["Year"] == 2013]["JobTitle"].value_counts() == 1))
