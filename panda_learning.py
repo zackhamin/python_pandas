@@ -277,3 +277,6 @@ print(new_data_frame.pivot_table(values="D", index=["A","B"],columns=["C"]))
 #Similarly bar two column X returns NaN because there is only a bar two with a value of Y
 
 print("------------------------Data input and output-------------------------------------------------")
+
+import_csv_and_read = pd.read_csv("../../Refactored_Py_DS_ML_Bootcamp-master/03-Python-for-Data-Analysis-Pandas/example")
+print(import_csv_and_read)
